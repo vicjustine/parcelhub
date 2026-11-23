@@ -15,17 +15,17 @@ def setup_module(module):
 
 def test_carrier_lookup_resists_injection():
     conn = connect()
-    rows = find_by_carrier(conn, INJECTION)
-    assert rows == [], (
-        f"SQL injection succeeded: a carrier that does not exist returned "
-        f"{len(rows)} rows (the entire shipments table)"
+    leaked = len(find_by_carrier(conn, INJECTION))
+    assert leaked == 0, (
+        f"SQL injection succeeded: a carrier that does not exist "
+        f"returned {leaked} rows (the entire shipments table)"
     )
 
 
 def test_status_lookup_resists_injection():
     conn = connect()
-    rows = find_by_status(conn, INJECTION)
-    assert rows == [], (
-        f"SQL injection succeeded: a status that does not exist returned "
-        f"{len(rows)} rows (the entire shipments table)"
+    leaked = len(find_by_status(conn, INJECTION))
+    assert leaked == 0, (
+        f"SQL injection succeeded: a status that does not exist "
+        f"returned {leaked} rows (the entire shipments table)"
     )
