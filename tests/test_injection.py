@@ -25,3 +25,4 @@ def test_status_lookup_resists_injection():
     assert leaked == 0, (
         f"SQL injection succeeded: a status that does not exist "
         f"returned {leaked} rows (the entire shipments table)"
+    )
