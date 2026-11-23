@@ -1,0 +1,14 @@
+service:
+  name: parcelhub
+  region: ca-central
+
+carriers:
+  northline:
+    endpoint: https://api.northline-freight.test/v2/status
+    sla_hours: 48
+  velocity:
+    endpoint: https://api.velocity-parcel.test/v1/tracking
+    sla_hours: 24
+  harbourway:
+    endpoint: https://api.harbourway.test/status
+    sla_hours: 72
