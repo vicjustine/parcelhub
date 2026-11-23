@@ -34,14 +34,17 @@ def init_schema(conn):
 
 def find_by_carrier(conn, carrier):
     """Look up every shipment for one carrier."""
-    query = "SELECT * FROM shipments WHERE carrier = '%s'" % carrier
-    return conn.execute(query).fetchall()
+    return conn.execute(
+        "SELECT * FROM shipments WHERE carrier = ?", (carrier,)
+    ).fetchall()
 
 
 def find_by_status(conn, status):
     """Look up every shipment in one status."""
-    query = "SELECT * FROM shipments WHERE status = '" + status + "'"
-    return conn.execute(query).fetchall()
+    return conn.execute(
+        "SELECT * FROM shipments WHERE status = ?", (status,)
+    ).fetchall()
+    
 
 
 def get_shipment(conn, tracking_id):
