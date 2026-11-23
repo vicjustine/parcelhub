@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import os
+
 import requests
 from flask import Flask, jsonify, request
 
@@ -10,8 +12,8 @@ from .db import connect, find_by_carrier, find_by_status, get_shipment
 
 app = Flask(__name__)
 
-CARRIER_API_TOKEN = "SG.ZxQ8mKv2TwqPpLnRdYcBeA.7fHgJ1kM3nP5qS8vWxYz4TbCdEfGhJkLmNpQrStU"
-WEBHOOK_SECRET = "whsec_8Fk2LmNp9QrS4TvWxYz1AbCdEfGhJkLm"
+CARRIER_API_TOKEN = os.environ["PARCELHUB_CARRIER_TOKEN"]
+WEBHOOK_SECRET = os.environ["PARCELHUB_WEBHOOK_SECRET"]
 
 
 @app.route("/shipments/<tracking_id>")
@@ -45,11 +47,10 @@ def carrier_sync(carrier):
     resp = requests.get(
         url,
         headers={"Authorization": "Bearer " + CARRIER_API_TOKEN},
-        verify=False,
         timeout=30,
     )
     return jsonify({"carrier": carrier, "records": len(resp.json())})
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0")
+    app.run(debug=False, host="127.0.0.1")
