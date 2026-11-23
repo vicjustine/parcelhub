@@ -4,7 +4,7 @@
 
 
 from parcelhub.db import connect, find_by_carrier, find_by_status
-from parcehub.seed import seed
+from parcelhub.seed import seed
 
 INJECTION = "nosuch' OR '1'='1"
 
