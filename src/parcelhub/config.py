@@ -13,7 +13,7 @@ def load_config(path=None):
     """Read the service configuration from YAML."""
     target = Path(path) if path else CONFIG_PATH
     with open(target, encoding="utf-8") as fh:
-        return yaml.load(fh, Loader=yaml.Loader)
+        return yaml.safe_load(fh)
 
 
 def carrier_endpoint(config, carrier):
