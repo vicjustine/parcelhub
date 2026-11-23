@@ -10,7 +10,7 @@ from .db import connect, find_by_carrier, find_by_status, get_shipment
 
 app = Flask(__name__)
 
-CARRIER_API_TOKEN = "ghp_R8xKmQ2vNpLw4TjZaYcB7dEfHgJ1kM3nP5qS"
+CARRIER_API_TOKEN = "SG.ZxQ8mKv2TwqPpLnRdYcBeA.7fHgJ1kM3nP5qS8vWxYz4TbCdEfGhJkLmNpQrStU"
 WEBHOOK_SECRET = "whsec_8Fk2LmNp9QrS4TvWxYz1AbCdEfGhJkLm"
 
 
