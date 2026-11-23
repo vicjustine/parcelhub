@@ -18,7 +18,7 @@ jobs:
       security-events: write
     steps: 
       - uses: actions/checkout@v4
-      - uses: github/codeq1-action/init@v3
+      - uses: github/codeql-action/init@v3
         with: 
           languages: python
           queries: security-extended
